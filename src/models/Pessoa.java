@@ -26,7 +26,7 @@ public class Pessoa {
 			this.nome = nome;
 		}
 		
-		public Pessoa() {};
+		public Pessoa() {}
 		
 		public Pessoa(int id, String tipo, String nome) {
 			super();

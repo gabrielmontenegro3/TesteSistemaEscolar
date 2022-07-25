@@ -9,12 +9,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import DB.FabricaConexao;
-import db.Pessoa;
 
 public class professorDAO extends Pessoa {
-	
-	
-	
+		
 	public static void consultarProfessor() throws SQLException{
 			
 		
@@ -76,23 +73,54 @@ public class professorDAO extends Pessoa {
 	}
 }
 
-	public static void deletarProfessor() throws SQLException{
+	public static void removerProfessor() throws SQLException{
 		
-		consultarProfessor();
+		Scanner entrada = new Scanner(System.in);
+
+		
 		
 		System.out.println("Remover professor, digite o ID");
+		int id = entrada.nextInt();
 		
-		String sql = "DELETE from professor where id_professor='id";
+		String sql = "DELETE FROM professor where id_professor = " + id + "";
+	//	String sql = "DELETE FROM pessoa where codigo_pessoa = " + id_usuario + "";
+				
+		Connection conexao = FabricaConexao.getConexao();
+		Statement stmt = conexao.createStatement();
+		stmt.execute(sql);
+		
+		System.out.println("Professor deletado!");
+		entrada.close();
+	}
+	
+	public static void alterarAluno() throws SQLException {
+		
+		//CRIAÇÃO DE UPDATE
+						
+		Scanner entrada = new Scanner(System.in);
+				
+		System.out.println("Digite o ID do aluno");
+		int id = entrada.nextInt();
+		
+		
+		String sql = "UPDATE from aluno where id_aluno = " + id + "";
+		
+		Connection conexao = FabricaConexao.getConexao();
+		Statement stmt = conexao.createStatement();
+		stmt.execute(sql);
 				
 		
+		entrada.close();
 	}
 	
-
 	public static void main(String[] args) throws SQLException {
 	
-	//	consultarProfessor();
-	//	adicionarProfessor();
-		
+	
+		consultarProfessor();
+		removerProfessor();
+		consultarProfessor();
 	}
+	
+	
 }
 
